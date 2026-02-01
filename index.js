@@ -23,6 +23,7 @@ var words = [
   var losses = 0;
   var word, displayWord, remainingGuesses, incorrectLetters;
 
+  // start of game settings
   function resetGame() {
     word = words[Math.floor(Math.random() * words.length)];
     displayWord = Array(word.length).fill("_");
@@ -34,6 +35,7 @@ var words = [
     incorrectlettersEL.innerHTML = "";
   }
 
+  // start new game
   resetGame();
   
   document.onkeyup = function (e) {
@@ -59,11 +61,11 @@ var words = [
         losses++;
         lossesEL.innerHTML = losses;
         previouswordEL.innerHTML = word;
-        resetGame(); // show previous word only when round ends
+        resetGame(); // show previous word if fail
       } else if (displayWord.join("") === word) {
         wins++;
         winsEL.innerHTML = wins;
-        previouswordEL.innerHTML = word; // show previous word only when round ends
+        previouswordEL.innerHTML = word; // show previous word if win
         resetGame();
       }
   
